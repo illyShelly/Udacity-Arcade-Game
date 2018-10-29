@@ -59,7 +59,7 @@ PlayerGuy.prototype.handleInput = function(key) {
   // jump over approx. 1 stone
   // x axis - better x > 80 (does not desapear from gameboard)
   if(key == 'left' && this.x > 80) {
-    // move close to y-axis; actual possition + 100px
+    // move close to y-axis; actual position + 100px
     this.x = this.x - 100;
   }
   if(key == 'right' && this.x < 400) {
@@ -100,7 +100,7 @@ for (var i = 0; i < axisY.length; i++) {
   // the best takes array then multiply i * 110 e.x.
   allEnemies.push(new Enemy(0, axisY[i], 100));
 }
-  // new object created and SET player's base POSSITION
+  // new object created and SET player's base POSITION
 var player = new PlayerGuy(205,420);
 
 // This listens for key presses and sends the keys to your
