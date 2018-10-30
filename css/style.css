@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background: linear-gradient(-270deg, black, #e6f2f4);
 }
 
 div, p {
@@ -13,4 +14,8 @@ img {
 
 #score, #lives {
   font-weight: bold;
+}
+
+p {
+  color: white;
 }
