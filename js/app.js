@@ -20,11 +20,17 @@ Enemy.prototype.update = function(dt) {
       this.x = -50;
       this.speed = 100 + Math.floor(Math.random() * 180);
     }
- // Checks for collisions between the player and the enemies
-    if (player.x < this.x + 80 && player.x + 80 > this.x &&
-        player.y < this.y + 60 && 60 + player.y > this.y) {
-        player.x = 205;
-        player.y = 405;
+
+  // Collisions between Guy and Enemies
+    var enemyFromLeft = this.x - 80;
+    var enemyFromRight = this.x + 80;
+    var enemyFromUp = this.y - 60;
+    var enemyFromDown = this.y + 60;
+
+    // horizontal/vertical position
+    if((enemyFromLeft <= player.x && player.x <= enemyFromRight) && (enemyFromUp <= player.y && player.y <= enemyFromDown)) {
+      player.x = 205;
+      player.y = 405;
     }
 }
 
