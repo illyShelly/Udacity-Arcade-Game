@@ -26,7 +26,7 @@ The only way to move with your player is with control arrow keys on the keyboard
 
 ## Controls
 
-left arrow key = moves player left
-right arrow key = moves player right
-up arrow key = moves player up
-down arrow key = moves player down
+left arrow key = moves player left;
+right arrow key = moves player right;
+up arrow key = moves player up;
+down arrow key = moves player down;
