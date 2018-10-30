@@ -1,5 +1,7 @@
 // Enemies our player must avoid
 var score = 0;
+var life = 5;
+
 class Enemy {
   constructor(x, y, speed) {
     this.x = x;
@@ -15,22 +17,32 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for all computers.
     this.x = this.x + this.speed * dt;
-
-    if(this.x > 500) {
+    if(this.x >= 500) {
       this.x = -50;
+    // speed starts on 100 per mile :)
       this.speed = 100 + Math.floor(Math.random() * 180);
     }
 
   // Collisions between Guy and Enemies
     var enemyFromLeft = this.x - 80;
     var enemyFromRight = this.x + 80;
-    var enemyFromUp = this.y - 60;
-    var enemyFromDown = this.y + 60;
+    var enemyFromUp = this.y - 30;
+    var enemyFromDown = this.y + 30;
 
     // horizontal/vertical position
     if((enemyFromLeft <= player.x && player.x <= enemyFromRight) && (enemyFromUp <= player.y && player.y <= enemyFromDown)) {
-      player.x = 205;
-      player.y = 405;
+      // not while it runs everything at once
+      if (life > 1 ) {
+        life -= 1;
+        var survive = document.querySelector("#lives");
+        survive.textContent = life;
+        player.x = 205; //right
+        player.y = 410; //down
+      }
+      else {
+        alert("Game Is Over!");
+        document.write("To continue refresh the page!!!");
+      }
     }
 }
 
@@ -43,9 +55,42 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+var boy = document.querySelector('#boy');
+var catish = document.querySelector('#cat');
+var hornish = document.querySelector('#horn');
+var pinkish = document.querySelector('#pink');
+var princessa = document.querySelector('#princess');
+
+// default setup before changing character by click
+var chosenCharacter = 'images/char-horn-girl.png';
+
+  boy.addEventListener('click', function() {
+      // var link = boy.src;
+      // console.log(link);
+      chosenCharacter = 'images/char-boy.png';
+      // console.log(chosenCharacter);
+      player.guy = chosenCharacter;
+    });
+  catish.addEventListener('click', function() {
+      chosenCharacter = 'images/char-cat-girl.png';
+      player.guy = chosenCharacter;
+    });
+  hornish.addEventListener('click', function() {
+      chosenCharacter = 'images/char-horn-girl.png';
+      player.guy = chosenCharacter;
+    });
+  pinkish.addEventListener('click', function() {
+        chosenCharacter = 'images/char-pink-girl.png';
+        player.guy = chosenCharacter;
+      });
+  princessa.addEventListener('click', function() {
+      chosenCharacter = 'images/char-princess-girl.png';
+      player.guy = chosenCharacter;
+    });
+
 class PlayerGuy {
-  constructor(baseX, baseY) {
-    this.guy = 'images/char-horn-girl.png';
+  constructor(baseX, baseY, chosenCharacter) {
+    this.guy = chosenCharacter;
     this.x = baseX;
     this.y = baseY;
   }
@@ -59,7 +104,6 @@ PlayerGuy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.guy), this.x, this.y);
 };
 
-// done
 PlayerGuy.prototype.handleInput = function(key) {
   // canvas 505 x 606
   // jump over approx. 1 stone
@@ -88,7 +132,7 @@ PlayerGuy.prototype.handleInput = function(key) {
     setTimeout(() => {
       player.x = 205; //right
       player.y = 410; //down
-    }, 400);
+    }, 300);
   }
   // console.log(score);
 
@@ -107,7 +151,7 @@ for (var i = 0; i < axisY.length; i++) {
   allEnemies.push(new Enemy(0, axisY[i], 100));
 }
   // new object created and SET player's base POSITION
-var player = new PlayerGuy(205,420);
+var player = new PlayerGuy(205,420, chosenCharacter);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

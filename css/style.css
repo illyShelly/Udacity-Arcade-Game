@@ -1,3 +1,16 @@
 body {
     text-align: center;
 }
+
+div, p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 10%;
+}
+
+#score, #lives {
+  font-weight: bold;
+}
