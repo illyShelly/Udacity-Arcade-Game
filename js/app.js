@@ -24,6 +24,8 @@ Enemy.prototype.update = function(dt) {
     }
 
   // Collisions between Guy and Enemies
+    // every bug/picture need to have some space around to work properly
+    // e.x.: +/- 10 pixels is not enough and collision does not work
     var enemyFromLeft = this.x - 80;
     var enemyFromRight = this.x + 80;
     var enemyFromUp = this.y - 30;
