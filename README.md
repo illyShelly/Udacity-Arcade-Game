@@ -8,7 +8,7 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 # Based on this game: Frogger
 
-To get started, open `index.html` in your browser. [Link to the game:](https://illyshelly.github.io/Udacity-Arcade-Game/)
+To get started, open `index.html` in your browser. [Link to the game.](https://illyshelly.github.io/Udacity-Arcade-Game/)
 
 ## Objective
 
